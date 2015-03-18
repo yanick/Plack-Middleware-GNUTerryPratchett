@@ -1,5 +1,21 @@
 Revision history for Plack-Middleware-GNUTerryPratchett
 
 {{$NEXT}}
+ [API CHANGES]
 
-  - First version, unleashed on an unsuspecting world.
+ [BUG FIXES]
+
+ [DOCUMENTATION]
+
+ [ENHANCEMENTS]
+
+ [NEW FEATURES]
+
+ [STATISTICS]
+
+0.0.1 2015-03-18
+ - First version, unleashed on an unsuspecting world.
+
+ [STATISTICS]
+ - code churn: 3 files changed, 20 insertions(+), 1 deletion(-)
+
