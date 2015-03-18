@@ -1,50 +1,12 @@
-package Plack::Middleware::GNUTerryPratchett;
-BEGIN {
-  $Plack::Middleware::GNUTerryPratchett::AUTHORITY = 'cpan:YANICK';
-}
-# ABSTRACT: Keeping the legacy of Sir Terry Pratchett alive forever
-$Plack::Middleware::GNUTerryPratchett::VERSION = '0.0.1';
-use strict;
-use warnings;
-
-use Plack::Util;
-
-use parent qw( Plack::Middleware );
-
-our $clacks_header = 'X-Clacks-Overhead';
-our $value         = 'GNU Terry Pratchett';
- 
-sub call {
-    my $self = shift;
-
-    my $res = $self->app->(@_);
-
-    $self->response_cb(
-        $res,
-        sub {
-            my $res = shift;
-            Plack::Util::header_set($res->[1], $clacks_header => $value )
-                unless Plack::Util::header_exists($res->[1], $clacks_header );
-        });
-}
-
-1;
-
-__END__
-
-=pod
-
-=encoding UTF-8
-
-=head1 NAME
+# NAME
 
 Plack::Middleware::GNUTerryPratchett - Keeping the legacy of Sir Terry Pratchett alive forever
 
-=head1 VERSION
+# VERSION
 
 version 0.0.1
 
-=head1 SYNOPSIS
+# SYNOPSIS
 
     use Plack::Builder;
     
@@ -53,14 +15,14 @@ version 0.0.1
         sub {['200', ['Content-Type' => 'text/html'}, ['hello world']]};
     };
 
-=head1 DESCRIPTION
+# DESCRIPTION
 
-This module adds a C<X-Clacks-Overhead> header to every response,
+This module adds a `X-Clacks-Overhead` header to every response,
 to celebrate and remember the legacy of Sir Terry Pratchett.
 
-=head1 ORIGIN
+# ORIGIN
 
-(Taken from L<http://www.gnuterrypratchett.com>)
+(Taken from [http://www.gnuterrypratchett.com](http://www.gnuterrypratchett.com))
 
      "You know they'll never really die while the Trunk is alive[...]
     It lives while the code is shifted, and they live with it, always Going Home." 
@@ -79,19 +41,17 @@ When Dearheart died, his name was inserted into the overhead of the clacks with 
 Keeping the legacy of Sir Terry Pratchett alive forever.
 For as long as his name is still passed along the Clacks, Death can't have him.
 
-=head1 SEE ALSO
+# SEE ALSO
 
-L<http://www.gnuterrypratchett.com>
+[http://www.gnuterrypratchett.com](http://www.gnuterrypratchett.com)
 
-=head1 AUTHOR
+# AUTHOR
 
-Yanick Champoux <yanick@cpan.org>
+Yanick Champoux <yanick@cpan.org> [![endorse](http://api.coderwall.com/yanick/endorsecount.png)](http://coderwall.com/yanick)
 
-=head1 COPYRIGHT AND LICENSE
+# COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2015 by Yanick Champoux.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
-=cut
